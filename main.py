@@ -25,7 +25,9 @@ def validate(text: str) -> None:
 
 def main() -> None:
     validate(ENTRY)
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    out_dir = os.path.dirname(OUTPUT_PATH)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(ENTRY)
     os.chmod(OUTPUT_PATH, 0o644)
